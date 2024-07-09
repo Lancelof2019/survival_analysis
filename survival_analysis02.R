@@ -489,57 +489,6 @@ TCGAanalyze_survival(combined_data, clusterCol = "shortLetterCode", filename = p
 #####################################
 
 
-#################################################################################
-
-
-
-
-
-# 
-# setwd("/users/zhanglia/ondemand/testSpace/code_and_data21/code/")
-# cancer_type<-"THCA"
-# 
-# extract_p_value <- function(pdf_path) {
-#   # 读取 PDF 文件的文本内容
-#   pdf_text_content <- pdf_text(pdf_path)
-#   full_text <- paste(pdf_text_content, collapse = " ")
-#   
-#   # 定义正则表达式模式
-#   #p_value_pattern_equal <- "p = ([0-9.]+)"
-#   #p_value_pattern_less <- "p < ([0-9.]+)"
-#   
-#   p_value_pattern_equal <- "p = ([0-9.eE+-]+)"
-#   p_value_pattern_less <- "p < ([0-9.eE+-]+)"
-#   
-#   # 尝试匹配 "p = 0.xxxx" 格式
-#   p_value_match_equal <- regexpr(p_value_pattern_equal, full_text)
-#   
-#   if (p_value_match_equal[1] != -1) {
-#     # 匹配 "p = 0.xxxx" 格式
-#     p_value <- regmatches(full_text, p_value_match_equal)
-#     p_value <- sub("p = ", "", p_value)
-#     return(as.numeric(p_value))
-#   } else {
-#     # 尝试匹配 "p < 0.xxxx" 格式
-#     p_value_match_less <- regexpr(p_value_pattern_less, full_text)
-#     if (p_value_match_less[1] != -1) {
-#       p_value <- regmatches(full_text, p_value_match_less)
-#       p_value <- sub("p < ", "", p_value)
-#       return(as.numeric(p_value))
-#     } else {
-#       return(NA)
-#     }
-#   }
-# }
-# 
-# # 示例：提取 PDF 文件中的 p 值
-# pdf_path_cluster <- paste0("../figure/surv_analysis/", cancer_type, "_survival_analysis01_update08.pdf")
-# p_value_cluster <- extract_p_value(pdf_path_cluster)
-# print(paste("p_value_cluster:", p_value_cluster))
-# 
-# pdf_path_stage <- paste0("../figure/surv_analysis/",cancer_type,"_survival_analysis_tumorStage_update08.pdf")
-# p_value_stage <- extract_p_value(pdf_path_stage)
-# print(paste("p_value_stage:", p_value_stage))
 
 setwd("/users/zhanglia/ondemand/testSpace/code_and_data21/code/")
 #cancer_type <- "THCA"
@@ -601,7 +550,7 @@ extract_p_value <- function(pdf_path) {
   
 }
 
-# 示例：提取 PDF 文件中的 p 值
+
 pdf_path_cluster <- paste0("../figure/surv_analysis/", cancer_type, "_survival_analysis01_update08.pdf")
 p_value_cluster <- extract_p_value(pdf_path_cluster)
 print(paste("p_value_cluster:", p_value_cluster))
@@ -613,7 +562,7 @@ print(paste("p_value_stage:", p_value_stage))
 
 
 
-#k_num<-7
+
 
 results <- data.frame(
   cancer_type = cancer_type,
@@ -625,7 +574,5 @@ results <- data.frame(
 )
 
 write.csv(results, paste0("../figure/surv_analysis/", cancer_type, "_survival_analysis_results08.csv"), row.names = FALSE)
-#print(results)
-
 
 }
